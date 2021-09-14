@@ -17,7 +17,7 @@
     </div>
     
     <div class="card-footer">
-        <a href="" class="card-link"> 
+        <a href="{{path("livre_fiche", {id: livre.id})}}" class="card-link"> 
             <i class="fa fa-book"></i> Voir plus 
         </a>
         {% if is_granted("ROLE_LECTEUR") %}
