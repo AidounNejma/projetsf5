@@ -1,0 +1,13 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Edit Abonne{% endblock %}
+
+{% block body %}
+    <h1>Editer un abonné</h1>
+
+    {{ include('abonne/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a class="btn btn-dark" href="{{ path('abonne_index') }}">Retour</a>
+
+    {{ include('abonne/_delete_form.html.twig') }}
+{% endblock %}

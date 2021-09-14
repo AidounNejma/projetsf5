@@ -1,0 +1,30 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+    <h1>Categorie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ categorie.titre }}</td>
+            </tr>
+            <tr>
+                <th>Mots</th>
+                <td>{{ categorie.mots }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-warning" href="{{ path('categorie_index') }}">Retour</a>
+
+    <a class="btn btn-primary" href="{{ path('categorie_edit', {'id': categorie.id}) }}">Editer</a>
+
+    {{ include('categorie/_delete_form.html.twig') }}
+{% endblock %}

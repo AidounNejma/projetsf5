@@ -1,0 +1,74 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Emprunt index{% endblock %}
+
+{% block body %}
+    <h1>Emprunt index</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Livre</th>
+                <th>Abonné</th>
+                <th>Date_emprunt</th>
+                <th>Date_retour</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for emprunt in emprunts %}
+            <tr>
+                <td>{{ emprunt.id }}</td>
+                <td>{{emprunt.livre.titre ~ " - " ~ emprunt.livre.auteur}}</td>
+                <td>{{emprunt.abonne.pseudo}}</td>
+                <td>{{ emprunt.dateEmprunt|date('d/m/y') }}</td>
+                <td>{{ emprunt.dateRetour ? emprunt.dateRetour|date('d/m/y') : '' }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('emprunt_show', {'id': emprunt.id}) }}"><i class="fa fa-book"></i></a>
+                    <a class="btn btn-primary" href="{{ path('emprunt_edit', {'id': emprunt.id}) }}"><i class="fa fa-edit"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun emprunt enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table >
+
+    <table class="table table-bordered">
+          <thead class="thead-dark">
+            <tr class="bg-light">
+                <th>Id</th>
+                <th>Livre</th>
+                <th>Abonné</th>
+                <th>Emprunté le</th>
+                <th>Rendu le</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for emprunt in emprunt_non_rendu %}
+            <tr>
+                <td>{{ emprunt.id }}</td>
+                <td>{{emprunt.livre.titre ~ " - " ~ emprunt.livre.auteur}}</td>
+                <td>{{emprunt.abonne.pseudo}}</td>
+                <td>{{ emprunt.dateEmprunt|date('d/m/y') }}</td>
+                <td>{{ emprunt.dateRetour ? emprunt.dateRetour|date('d/m/y') : '' }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('emprunt_show', {'id': emprunt.id}) }}"><i class="fa fa-book"></i></a>
+                    <a class="btn btn-primary" href="{{ path('emprunt_edit', {'id': emprunt.id}) }}"><i class="fa fa-edit"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun emprunt enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    <a class="btn btn-dark" href="{{ path('emprunt_new') }}">Nouvel emprunt</a>
+{% endblock %}

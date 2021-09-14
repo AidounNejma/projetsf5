@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+
+    </head>
+    <body>
+        <div class="container-text-center">
+            {% include "_menu.html.twig" %}
+        
+            {# Pour accéder aux messages flash, j'utilise app.flashes #}
+            {% for type, messages in app.flashes %}
+                {% for msg in messages %}
+                    <div class="alert alert-{{ type }}"{{msg|raw}}></div>
+                {% endfor %}
+            {% endfor %}
+
+            <h1> Bienvenue à la bibliotheque </h1>
+
+            {% block body %}
+                <p>Bonjour, {{prenom |upper|capitalize}}</p>
+            {% endblock %}
+            </div>
+        
+            <footer>
+                <p>Ceci est le footer</p>
+            </footer>
+        
+    </body>
+</html>
+
+{# commentaire twig #}
+
+{# 
+- pas de PHP ds un fichier twig, 
+- une balise twig est délimitée par {%  %} (au lieu de < et > en html)
+- entre les {%  %} il y a le type de la balise
+pour fermer la balise {% 'end'  suivi du type de la balise %}
+
+- pr afficher le contenu d'une variable on utilise {{ }} : double accolade . les noms des variables ne commencant pas par $ 
+- les noms des varibales correspondent aux indices de l'array passé en 2 eme paragraphe de la méthode 'render'. 
+#}

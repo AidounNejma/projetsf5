@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccueilController!{% endblock %}
+
+{% block body %}
+
+
+<div class="card-columns">
+    {% for livre in livres %}
+        {{include("livre/vignettes.html.twig")}}
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

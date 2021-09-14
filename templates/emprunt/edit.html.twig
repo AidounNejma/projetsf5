@@ -1,0 +1,13 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Edit Emprunt{% endblock %}
+
+{% block body %}
+    <h1>Editer un emprunt</h1>
+
+    {{ include('emprunt/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a class= "btn btn-warning" href="{{ path('emprunt_index') }}">Retour</a>
+
+    {{ include('emprunt/_delete_form.html.twig') }}
+{% endblock %}
